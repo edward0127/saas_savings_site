@@ -1,6 +1,8 @@
 services:
   web:
     image: ghcr.io/edward0127/saas_savings_site:latest
+    security_opt:
+      - seccomp=unconfined
     container_name: saas_savings_site
     restart: unless-stopped
     ports:
