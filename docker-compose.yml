@@ -12,8 +12,6 @@ services:
       RAILS_LOG_TO_STDOUT: "1"
     volumes:
       - saas_savings_storage:/rails/storage
-      - saas_savings_db:/data
 
 volumes:
   saas_savings_storage:
-  saas_savings_db:
