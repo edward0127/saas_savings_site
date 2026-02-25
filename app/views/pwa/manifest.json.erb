@@ -1,13 +1,14 @@
+<% icon_version = (Rails.root.join("public", "icon.svg").mtime.to_i rescue 1) %>
 {
   "name": "Tudouke",
   "icons": [
     {
-      "src": "/icon.png",
+      "src": "/icon.png?v=<%= icon_version %>",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "/icon.png",
+      "src": "/icon.png?v=<%= icon_version %>",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"

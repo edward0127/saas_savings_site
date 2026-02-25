@@ -1,4 +1,11 @@
 module ApplicationHelper
+  def icon_asset_version
+    @icon_asset_version ||= begin
+      icon_path = Rails.root.join("public", "icon.svg")
+      icon_path.exist? ? icon_path.mtime.to_i.to_s : "1"
+    end
+  end
+
   def nav_link_class(path)
     base = "text-sm font-medium transition hover:text-cyan-700"
     active = "text-cyan-800"
