@@ -1,0 +1,15 @@
+New Tudouke Enquiry
+
+Received: <%= @lead.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M %Z") %>
+
+Name: <%= @lead.name %>
+Email: <%= @lead.email %>
+Company: <%= @lead.company.presence || "-" %>
+Monthly Spend: <%= @lead.monthly_spend.present? ? number_with_delimiter(@lead.monthly_spend) : "-" %>
+Source Page: <%= @lead.source_page.presence || "-" %>
+
+Current Tools:
+<%= @lead.current_tools.presence || "-" %>
+
+Message:
+<%= @lead.message.presence || "-" %>

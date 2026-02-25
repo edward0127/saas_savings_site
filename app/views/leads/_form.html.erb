@@ -1,0 +1,71 @@
+<%= turbo_frame_tag "lead_form" do %>
+  <%= form_with model: lead, url: leads_path, class: "rounded-2xl border border-slate-200 bg-white/95 p-6 shadow-sm", data: { controller: "submit-state", action: "turbo:submit-start->submit-state#start turbo:submit-end->submit-state#end" } do |form| %>
+    <% if lead.errors.any? %>
+      <div class="mb-5 rounded-xl border border-rose-300 bg-rose-50 px-4 py-3 text-sm text-rose-900">
+        <p class="font-semibold">Please review the form and try again.</p>
+        <ul class="mt-2 space-y-1">
+          <% lead.errors.full_messages.each do |message| %>
+            <li>- <%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div>
+        <%= form.label :name, "Name*", class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.text_field :name, required: true, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none" %>
+      </div>
+      <div>
+        <%= form.label :email, "Email*", class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.email_field :email, required: true, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none" %>
+      </div>
+      <div>
+        <%= form.label :company, class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.text_field :company, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none" %>
+      </div>
+      <div>
+        <%= form.label :monthly_spend, "Current Monthly Software Spend", class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.number_field :monthly_spend, min: 0, step: 1, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none" %>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <%= form.label :current_tools, "Current website or tools", class: "mb-1 block text-sm font-medium text-slate-700" %>
+      <%= form.text_area :current_tools, rows: 3, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none" %>
+    </div>
+
+    <div class="mt-4">
+      <%= form.label :message, "What would you like to build or improve?*", class: "mb-1 block text-sm font-medium text-slate-700" %>
+      <%= form.text_area :message, required: true, rows: 4, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none" %>
+    </div>
+
+    <div class="hidden" aria-hidden="true">
+      <%= label_tag :website, "Website" %>
+      <%= text_field_tag :website, nil, autocomplete: "off", tabindex: -1 %>
+    </div>
+
+    <%= form.hidden_field :source_page, value: lead.source_page.presence || request.path %>
+
+    <div class="mt-6">
+      <button
+        type="submit"
+        class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-4 py-3 text-sm font-semibold text-white transition hover:from-cyan-600 hover:to-emerald-600 disabled:cursor-not-allowed disabled:opacity-70"
+        data-submit-state-target="button"
+      >
+        <span data-submit-state-target="label">Send My Request</span>
+        <svg
+          viewBox="0 0 24 24"
+          class="h-4 w-4 animate-spin text-white"
+          data-submit-state-target="spinner"
+          hidden
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" class="opacity-30" fill="none"></circle>
+          <path d="M12 3a9 9 0 0 1 9 9" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"></path>
+        </svg>
+      </button>
+      <p class="mt-2 text-xs text-slate-500" data-submit-state-target="message" role="status" aria-live="polite"></p>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,36 @@
+<header class="sticky top-0 z-30 border-b border-white/70 bg-white/80 backdrop-blur">
+  <nav data-controller="menu" class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <%= link_to root_path, class: "font-heading text-xl font-bold tracking-tight text-slate-900" do %>
+      Tudouke
+    <% end %>
+
+    <button
+      type="button"
+      class="rounded-lg border border-slate-300 bg-white p-2 text-slate-700 md:hidden"
+      data-action="menu#toggle"
+      aria-label="Toggle navigation"
+    >
+      <span data-menu-target="openIcon">
+        <svg viewBox="0 0 20 20" class="h-5 w-5" fill="none" aria-hidden="true">
+          <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span data-menu-target="closeIcon" class="hidden">
+        <svg viewBox="0 0 20 20" class="h-5 w-5" fill="none" aria-hidden="true">
+          <path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </button>
+
+    <div data-menu-target="panel" class="hidden w-full md:block md:w-auto">
+      <div class="mt-4 flex flex-col gap-3 md:mt-0 md:flex-row md:items-center md:gap-6">
+        <%= link_to "How It Works", how_it_works_path, class: nav_link_class(how_it_works_path) %>
+        <%= link_to "What We Build", what_we_replace_path, class: nav_link_class(what_we_replace_path) %>
+        <%= link_to "Engagement", pricing_path, class: nav_link_class(pricing_path) %>
+        <%= link_to "About", about_path, class: nav_link_class(about_path) %>
+        <%= link_to "Contact", contact_path, class: nav_link_class(contact_path) %>
+        <%= link_to "Get a Free Plan", "#{contact_path}#audit-form", class: "inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-4 py-2 text-sm font-semibold text-white transition hover:from-cyan-600 hover:to-emerald-600" %>
+      </div>
+    </div>
+  </nav>
+</header>

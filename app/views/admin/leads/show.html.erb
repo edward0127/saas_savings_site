@@ -1,0 +1,23 @@
+<section class="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+  <div class="mb-6 flex items-center justify-between">
+    <h1 class="font-heading text-3xl font-bold text-slate-900">Lead Detail</h1>
+    <%= link_to "Back to Leads", admin_leads_path, class: "rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:border-cyan-400 hover:text-cyan-700" %>
+  </div>
+
+  <div class="space-y-4 rounded-2xl border border-slate-200 bg-white/95 p-6 text-sm shadow-sm">
+    <p><strong class="text-slate-600">Name:</strong> <span class="text-slate-900"><%= @lead.name %></span></p>
+    <p><strong class="text-slate-600">Email:</strong> <span class="text-slate-900"><%= @lead.email %></span></p>
+    <p><strong class="text-slate-600">Company:</strong> <span class="text-slate-900"><%= @lead.company.presence || "-" %></span></p>
+    <p><strong class="text-slate-600">Monthly Spend:</strong> <span class="text-slate-900"><%= @lead.monthly_spend.present? ? number_to_currency(@lead.monthly_spend) : "-" %></span></p>
+    <p><strong class="text-slate-600">Source Page:</strong> <span class="text-slate-900"><%= @lead.source_page.presence || "-" %></span></p>
+    <p><strong class="text-slate-600">Submitted At:</strong> <span class="text-slate-900"><%= l(@lead.created_at, format: :long) %></span></p>
+    <div>
+      <p class="font-semibold text-slate-600">Current Tools</p>
+      <p class="mt-1 whitespace-pre-line text-slate-900"><%= @lead.current_tools.presence || "-" %></p>
+    </div>
+    <div>
+      <p class="font-semibold text-slate-600">Message</p>
+      <p class="mt-1 whitespace-pre-line text-slate-900"><%= @lead.message.presence || "-" %></p>
+    </div>
+  </div>
+</section>

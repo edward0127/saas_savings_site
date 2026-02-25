@@ -1,0 +1,15 @@
+<article data-controller="accordion" class="rounded-2xl border border-slate-200 bg-white/90 px-5 py-4">
+  <button
+    type="button"
+    data-action="accordion#toggle"
+    class="flex w-full items-center justify-between gap-4 text-left text-base font-semibold text-slate-900"
+  >
+    <span><%= question %></span>
+    <span data-accordion-target="icon" class="transition">
+      <svg viewBox="0 0 20 20" class="h-5 w-5" fill="none" aria-hidden="true">
+        <path d="m5 8 5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+  <p data-accordion-target="panel" class="mt-3 hidden text-sm leading-6 text-slate-600"><%= answer %></p>
+</article>

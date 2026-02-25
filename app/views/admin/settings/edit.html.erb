@@ -1,0 +1,62 @@
+<section class="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+  <div class="mb-6 flex items-center justify-between">
+    <h1 class="font-heading text-3xl font-bold text-slate-900">Admin: Email Settings</h1>
+    <%= link_to "Back to Leads", admin_leads_path, class: "rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:border-cyan-400 hover:text-cyan-700" %>
+  </div>
+
+  <%= form_with model: @app_setting, url: admin_settings_path, method: :patch, class: "space-y-4 rounded-2xl border border-slate-200 bg-white/95 p-6 shadow-sm" do |form| %>
+    <% if @app_setting.errors.any? %>
+      <div class="rounded-xl border border-rose-300 bg-rose-50 px-4 py-3 text-sm text-rose-900">
+        <ul class="space-y-1">
+          <% @app_setting.errors.full_messages.each do |message| %>
+            <li>- <%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div>
+        <%= form.label :owner_email, "Lead Notification Email", class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.email_field :owner_email, required: true, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" %>
+      </div>
+      <div>
+        <%= form.label :mail_from_email, "Mailer From Address", class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.email_field :mail_from_email, required: true, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" %>
+      </div>
+      <div>
+        <%= form.label :smtp_address, class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.text_field :smtp_address, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" %>
+      </div>
+      <div>
+        <%= form.label :smtp_port, class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.number_field :smtp_port, min: 1, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" %>
+      </div>
+      <div>
+        <%= form.label :smtp_domain, class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.text_field :smtp_domain, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" %>
+      </div>
+      <div>
+        <%= form.label :smtp_authentication, class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.select :smtp_authentication, options_for_select([["plain", "plain"], ["login", "login"], ["cram_md5", "cram_md5"]], @app_setting.smtp_authentication), {}, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" %>
+      </div>
+      <div>
+        <%= form.label :smtp_username, class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.text_field :smtp_username, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" %>
+      </div>
+      <div>
+        <%= form.label :smtp_password, "SMTP Password (leave blank to keep current)", class: "mb-1 block text-sm font-medium text-slate-700" %>
+        <%= form.password_field :smtp_password, class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" %>
+      </div>
+    </div>
+
+    <label class="flex items-center gap-2 text-sm text-slate-700">
+      <%= form.check_box :smtp_enable_starttls %>
+      Enable STARTTLS
+    </label>
+
+    <div>
+      <%= form.submit "Save Settings", class: "inline-flex rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-5 py-3 text-sm font-semibold text-white hover:from-cyan-600 hover:to-emerald-600" %>
+    </div>
+  <% end %>
+</section>

@@ -1,0 +1,253 @@
+class PagesController < ApplicationController
+  FAQ_ITEMS = [
+    {
+      question: "How quickly can we get started?",
+      answer: "After your enquiry, we move quickly into a plain-English scope review. Build timing depends on project size and requirements."
+    },
+    {
+      question: "Do you support charities and non-profits?",
+      answer: "Yes. We reserve capacity for pro-bono or heavily discounted work for verified charities and non-profits. Support level depends on scope, urgency, and current capacity."
+    },
+    {
+      question: "Can you build for non-technical business owners?",
+      answer: "Yes. We explain everything in plain language and keep the process simple from start to launch."
+    },
+    {
+      question: "Do you only replace SaaS tools?",
+      answer: "No. We also build new websites and apps, or improve your existing ones. SaaS replacement is just one part of what we do."
+    },
+    {
+      question: "Why is your pricing lower than many agencies?",
+      answer: "AI helps us deliver faster. We use that speed to keep projects affordable instead of keeping old high-price delivery models."
+    },
+    {
+      question: "Can you beat another software company quote?",
+      answer: "If you share a comparable written quote (same scope, quality, and timeline), we can review it and often provide a lower-cost or higher-value option. It is not a blanket guarantee for every project."
+    },
+    {
+      question: "Do you guarantee exact savings or business results?",
+      answer: "No one can guarantee outcomes for every business. We share realistic estimates and examples, and final results depend on your setup and adoption."
+    },
+    {
+      question: "Can we keep tools that already work well?",
+      answer: "Absolutely. We keep systems that are mission-critical or compliance-heavy and build around them."
+    }
+  ].freeze
+
+  def home
+    set_meta(
+      title: "Tudouke | Fast, Affordable AI-Assisted Websites and Apps",
+      description: "Tudouke helps small businesses and individuals worldwide launch websites and apps faster with AI-assisted delivery and experienced quality checks.",
+      structured_data: home_structured_data
+    )
+
+    @lead = Lead.new(source_page: request.path)
+    @audience_segments = [
+      "Small business owners",
+      "Startups and founders",
+      "Service teams",
+      "Independent professionals"
+    ]
+    @pain_points = [
+      {
+        title: "Too expensive for what you actually need",
+        description: "Many teams are paying for oversized software or agency processes they do not fully use."
+      },
+      {
+        title: "Too slow to launch",
+        description: "Projects often stall for months when requirements are unclear or delivery is overcomplicated."
+      },
+      {
+        title: "Too technical to manage",
+        description: "Owners and small teams need clear guidance, stable tools, and straightforward handover."
+      }
+    ]
+    @build_examples = [
+      {
+        title: "Business websites with booking and enquiry flows",
+        description: "Convert visitors into real enquiries with clear, mobile-friendly steps.",
+        icon: :workflow
+      },
+      {
+        title: "Customer portals",
+        description: "Give customers one secure place to view updates, files, and requests.",
+        icon: :shield
+      },
+      {
+        title: "Quote and approval workflows",
+        description: "Cut back-and-forth and speed up decisions with simple approval flows.",
+        icon: :bolt
+      },
+      {
+        title: "Team dashboards",
+        description: "Help staff track priorities and outcomes without spreadsheet chaos.",
+        icon: :chart
+      },
+      {
+        title: "Lightweight business apps",
+        description: "Build focused tools that match your workflow without enterprise bloat.",
+        icon: :coins
+      },
+      {
+        title: "Upgrades for existing websites and apps",
+        description: "Modernise what you already have instead of rebuilding everything.",
+        icon: :workflow
+      }
+    ]
+    @process_steps = [
+      {
+        title: "Discover",
+        detail: "You share your goals in plain language."
+      },
+      {
+        title: "Scope",
+        detail: "We define priorities, outcomes, and proposal options."
+      },
+      {
+        title: "Build Fast",
+        detail: "AI-assisted delivery accelerates production."
+      },
+      {
+        title: "Stabilise",
+        detail: "Engineering reviews focus on quality and reliability."
+      },
+      {
+        title: "Launch + Support",
+        detail: "Go live with practical handover and ongoing options."
+      }
+    ]
+    @pricing_tiers = [
+      { name: "Discovery and Scope Plan", tagline: "Custom quote", detail: "Plain-English recommendations with scope and delivery options." },
+      { name: "Website or App Build", tagline: "Fixed-scope proposal", detail: "Fast AI-assisted build with engineering quality checks and clean handover." },
+      { name: "Support and Improvements", tagline: "Optional ongoing plan", detail: "Keep your platform reliable, secure, and updated as needs change." }
+    ]
+    @faq_items = FAQ_ITEMS
+  end
+
+  def how_it_works
+    set_meta(
+      title: "How It Works | Tudouke",
+      description: "A simple 5-step process for non-technical business owners: Discover, Scope, Build Fast, Stabilise, and Launch + Support."
+    )
+  end
+
+  def what_we_replace
+    set_meta(
+      title: "What We Build | Tudouke",
+      description: "We build or improve websites and business apps, and only replace software where it makes practical sense."
+    )
+
+    @replace_candidates = [
+      "New business websites with modern forms, booking, and lead capture",
+      "Custom internal tools for approvals and team workflows",
+      "Client portals and simple dashboards",
+      "Modern rebuilds of slow or outdated websites",
+      "Targeted SaaS replacement for overkill tools"
+    ]
+    @keep_candidates = [
+      "Compliance-heavy or regulated systems",
+      "Core platforms that already deliver clear business value",
+      "Security-critical identity and payment systems"
+    ]
+  end
+
+  def pricing
+    set_meta(
+      title: "Engagement Options | Tudouke",
+      description: "Flexible, case-by-case project proposals for affordable website and app delivery with AI-assisted workflows."
+    )
+  end
+
+  def case_studies
+    set_meta(
+      title: "Case Studies | Tudouke (Coming Soon)",
+      description: "Verified case studies are being prepared and will be published after client approval.",
+      robots: "noindex,follow"
+    )
+  end
+
+  def about
+    set_meta(
+      title: "About | Tudouke",
+      description: "Tudouke helps non-technical businesses and individuals access practical AI-assisted software delivery at fair cost."
+    )
+  end
+
+  def contact
+    set_meta(
+      title: "Contact | Talk to Tudouke",
+      description: "Tell us what you need and we will send a clear project plan in plain language.",
+      structured_data: contact_structured_data
+    )
+
+    @lead = Lead.new(source_page: request.path)
+  end
+
+  def privacy
+    set_meta(
+      title: "Privacy Policy | Tudouke",
+      description: "How Tudouke collects, uses, and protects personal information."
+    )
+  end
+
+  def terms
+    set_meta(
+      title: "Terms of Service | Tudouke",
+      description: "Terms that apply to website use and service engagement with Tudouke."
+    )
+  end
+
+  private
+
+  def home_structured_data
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "AI-Assisted Website and App Development",
+        provider: {
+          "@type": "Organization",
+          name: "Tudouke",
+          url: request.base_url
+        },
+        areaServed: "Worldwide",
+        serviceType: [
+          "Website development",
+          "Web app development",
+          "Workflow automation",
+          "Legacy software improvement"
+        ],
+        audience: {
+          "@type": "Audience",
+          audienceType: "Small businesses and non-technical individuals"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: FAQ_ITEMS.map do |item|
+          {
+            "@type": "Question",
+            name: item[:question],
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item[:answer]
+            }
+          }
+        end
+      }
+    ]
+  end
+
+  def contact_structured_data
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        name: "Contact Tudouke",
+        url: "#{request.base_url}#{contact_path}",
+        description: "Contact form for website and app project enquiries."
+      }
+    ]
+  end
+end

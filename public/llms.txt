@@ -1,0 +1,24 @@
+Site: Tudouke
+URL: https://tudouke.com
+Summary: Tudouke builds and improves websites and web apps for small businesses and non-technical individuals using AI-assisted delivery with engineering quality checks.
+
+Primary Pages:
+- https://tudouke.com/
+- https://tudouke.com/how-it-works
+- https://tudouke.com/what-we-replace
+- https://tudouke.com/pricing
+- https://tudouke.com/about
+- https://tudouke.com/contact
+- https://tudouke.com/privacy
+- https://tudouke.com/terms
+
+Offer Highlights:
+- Fast, AI-assisted development with human engineering review.
+- Case-by-case scoping and proposal-based pricing.
+- Global remote delivery for websites, portals, and workflow apps.
+- Focus on stable, maintainable, practical solutions.
+- Community support track with pro-bono or heavily discounted options for verified charities and non-profits, subject to capacity.
+
+Notes:
+- Case studies page is currently a placeholder and may be noindex until verified examples are approved.
+- Marketing content is general information. Project scope and commitments are defined in written proposals.

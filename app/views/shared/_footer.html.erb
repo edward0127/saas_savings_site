@@ -1,0 +1,26 @@
+<footer class="border-t border-slate-200/80 bg-white/70">
+  <div class="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:px-8">
+    <div>
+      <p class="font-heading text-lg font-semibold text-slate-900">Tudouke</p>
+      <p class="mt-2 max-w-md text-sm text-slate-600">
+        Practical and cost-competitive website and app delivery for small businesses and individuals worldwide using AI-assisted workflows.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2 text-sm">
+      <%= link_to "Home", root_path, class: "text-slate-700 hover:text-cyan-700" %>
+      <%= link_to "How It Works", how_it_works_path, class: "text-slate-700 hover:text-cyan-700" %>
+      <%= link_to "What We Build", what_we_replace_path, class: "text-slate-700 hover:text-cyan-700" %>
+      <%= link_to "Engagement", pricing_path, class: "text-slate-700 hover:text-cyan-700" %>
+      <%= link_to "Contact", contact_path, class: "text-slate-700 hover:text-cyan-700" %>
+      <%= link_to "Privacy", privacy_path, class: "text-slate-700 hover:text-cyan-700" %>
+      <%= link_to "Terms", terms_path, class: "text-slate-700 hover:text-cyan-700" %>
+    </div>
+
+    <div class="text-sm text-slate-600">
+      <p>Helping non-technical owners launch better digital tools at fair cost.</p>
+      <p class="mt-2">Website: <a class="font-medium text-cyan-700 hover:text-cyan-800" href="https://tudouke.com">tudouke.com</a></p>
+      <p class="mt-2">Copyright <%= Time.current.year %> Tudouke. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

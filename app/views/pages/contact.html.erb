@@ -1,0 +1,28 @@
+<section class="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+  <div class="grid gap-8 lg:grid-cols-2">
+    <div>
+      <h1 class="font-heading text-4xl font-bold text-slate-900">Let's plan your website or app</h1>
+      <p class="mt-4 text-base text-slate-700">
+        Tell us what you want to build (or improve). We will reply with a clear plan and practical options.
+      </p>
+      <div class="mt-8 rounded-2xl border border-slate-200 bg-white/90 p-5 text-sm text-slate-700 shadow-sm">
+        <p class="font-semibold text-slate-900">What you'll get:</p>
+        <ul class="mt-3 space-y-2">
+          <li>- A plain-English recommendation</li>
+          <li>- Indicative timeline and scope options</li>
+          <li>- A practical first step you can act on quickly</li>
+        </ul>
+      </div>
+      <p class="mt-4 text-sm text-emerald-700">
+        Charity or non-profit? Mention it in your message so we can assess community support options.
+      </p>
+      <p class="mt-4 text-xs text-slate-500">
+        By submitting this form, you agree we may contact you about your enquiry.
+      </p>
+    </div>
+
+    <div id="audit-form">
+      <%= render "leads/form", lead: @lead %>
+    </div>
+  </div>
+</section>

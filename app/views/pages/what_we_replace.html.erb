@@ -1,0 +1,36 @@
+<section class="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+  <h1 class="font-heading text-4xl font-bold text-slate-900">What We Build</h1>
+  <p class="mt-4 max-w-3xl text-base text-slate-700">
+    Tudouke builds custom websites and apps, improves existing systems, and only replaces software where it is genuinely useful.
+  </p>
+
+  <div class="mt-10 grid gap-6 lg:grid-cols-2">
+    <article class="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-6">
+      <h2 class="text-xl font-semibold text-slate-900">Great project types</h2>
+      <ul class="mt-4 space-y-2 text-sm text-slate-700">
+        <% @replace_candidates.each do |item| %>
+          <li>- <%= item %></li>
+        <% end %>
+      </ul>
+    </article>
+
+    <article class="rounded-2xl border border-cyan-200 bg-cyan-50/80 p-6">
+      <h2 class="text-xl font-semibold text-slate-900">Software worth keeping</h2>
+      <p class="mt-3 text-sm text-slate-700">
+        We do not recommend replacing critical platforms without a practical reason. We build around what already works.
+      </p>
+      <ul class="mt-4 space-y-2 text-sm text-slate-700">
+        <% @keep_candidates.each do |item| %>
+          <li>- <%= item %></li>
+        <% end %>
+      </ul>
+    </article>
+  </div>
+
+  <div class="mt-10 rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-sm">
+    <h2 class="text-xl font-semibold text-slate-900">Our approach</h2>
+    <p class="mt-3 text-sm text-slate-700">
+      AI can accelerate delivery dramatically. Our view is simple: those efficiency gains should help business owners through faster timelines and fairer pricing.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+<section class="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+  <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h1 class="font-heading text-3xl font-bold text-slate-900">Admin: Leads</h1>
+      <p class="mt-1 text-sm text-slate-600">Newest leads first. Export all records as CSV anytime.</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <%= link_to "SMTP/Email Settings", edit_admin_settings_path, class: "rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:border-cyan-400 hover:text-cyan-700" %>
+      <%= link_to "Export CSV", export_admin_leads_path(format: :csv), class: "rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-4 py-2 text-sm font-semibold text-white hover:from-cyan-600 hover:to-emerald-600" %>
+    </div>
+  </div>
+
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white/95 shadow-sm">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-100 text-left text-slate-700">
+        <tr>
+          <th class="px-4 py-3">Name</th>
+          <th class="px-4 py-3">Email</th>
+          <th class="px-4 py-3">Company</th>
+          <th class="px-4 py-3">Monthly Spend</th>
+          <th class="px-4 py-3">Source</th>
+          <th class="px-4 py-3">Received</th>
+          <th class="px-4 py-3"></th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-200 text-slate-800">
+        <% @leads.each do |lead| %>
+          <tr>
+            <td class="px-4 py-3"><%= lead.name %></td>
+            <td class="px-4 py-3"><%= lead.email %></td>
+            <td class="px-4 py-3"><%= lead.company.presence || "-" %></td>
+            <td class="px-4 py-3"><%= lead.monthly_spend.present? ? number_to_currency(lead.monthly_spend) : "-" %></td>
+            <td class="px-4 py-3"><%= lead.source_page.presence || "-" %></td>
+            <td class="px-4 py-3"><%= l(lead.created_at, format: :short) %></td>
+            <td class="px-4 py-3 text-right">
+              <%= link_to "View", admin_lead_path(lead), class: "font-semibold text-cyan-700 hover:text-cyan-800" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
