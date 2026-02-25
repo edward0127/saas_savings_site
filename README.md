@@ -146,3 +146,11 @@ App will be available at `http://localhost:3000`.
 - Lead notifications use `LeadMailer` with dynamic SMTP options from `AppSetting`.
 - If SMTP is not configured, leads are still saved successfully.
 - Tailwind/Hotwire interactions are implemented with importmap and Stimulus controllers (`accordion`, `menu`).
+
+## Run on server
+
+docker compose down
+docker compose pull web
+docker compose up -d --force-recreate
+docker ps
+docker compose logs --tail=100 web
