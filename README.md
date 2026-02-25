@@ -151,8 +151,8 @@ App will be available at `http://localhost:3000`.
 
 SHA=$(git rev-parse --short HEAD)
 docker buildx build --platform linux/amd64 \
-  -t ghcr.io/edward0127/curtain_b2b_quote:$SHA \
-  -t ghcr.io/edward0127/curtain_b2b_quote:latest \
+  -t ghcr.io/edward0127/saas_savings_site:$SHA \
+  -t ghcr.io/edward0127/saas_savings_site:latest \
   --push .
 
 git pull
