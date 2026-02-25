@@ -131,6 +131,14 @@ The app includes a production-oriented `Dockerfile` and `docker-compose.yml` usi
 docker compose up --build
 ```
 
+```bash
+SHA=$(git rev-parse --short HEAD)
+docker buildx build --platform linux/amd64 \
+  -t ghcr.io/edward0127/saas_savings_site:$SHA \
+  -t ghcr.io/edward0127/saas_savings_site:latest \
+  --push .
+```
+
 App will be available at `http://localhost:3000`.
 
 ## Notes
