@@ -15,16 +15,13 @@
     <div class="flex min-h-screen flex-col lg:flex-row">
       <aside class="admin-sidebar">
         <div class="admin-card-soft p-4">
-          <div class="flex items-center gap-3">
+          <%= link_to admin_root_path, class: "flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.02] p-2 transition hover:border-white/20 hover:bg-white/[0.04]" do %>
             <span class="admin-brand-chip">TK</span>
             <div>
               <p class="font-heading text-lg font-bold tracking-tight text-white">Tutuke</p>
               <p class="text-xs text-slate-300/80">Admin command center</p>
             </div>
-          </div>
-          <div class="mt-4 rounded-2xl border border-cyan-300/20 bg-gradient-to-r from-cyan-500/15 to-emerald-500/10 px-3 py-2 text-xs text-slate-200">
-            Leads, traffic, SEO pages, and email setup in one place.
-          </div>
+          <% end %>
         </div>
 
         <nav class="mt-5 grid grid-cols-2 gap-2 lg:grid-cols-1">
