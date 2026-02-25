@@ -25,6 +25,80 @@
   }
 }
 
+@layer components {
+  .admin-shell-bg {
+    @apply min-h-screen bg-slate-950 text-slate-100;
+    background-image:
+      radial-gradient(circle at 10% 15%, rgb(56 189 248 / 22%), transparent 32%),
+      radial-gradient(circle at 90% 12%, rgb(45 212 191 / 20%), transparent 30%),
+      radial-gradient(circle at 52% 100%, rgb(167 139 250 / 14%), transparent 40%);
+  }
+
+  .admin-sidebar {
+    @apply border-b border-white/10 bg-slate-900/70 px-4 py-5 backdrop-blur-xl lg:min-h-screen lg:w-[18.5rem] lg:shrink-0 lg:border-b-0 lg:border-r;
+  }
+
+  .admin-brand-chip {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-300 via-sky-400 to-emerald-300 text-sm font-black tracking-wide text-slate-950 shadow-lg shadow-cyan-900/40;
+  }
+
+  .admin-link {
+    @apply inline-flex items-center gap-2.5 rounded-2xl border border-transparent px-4 py-3 text-sm font-semibold transition-all duration-200;
+  }
+
+  .admin-link-active {
+    @apply border-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-300 text-slate-950 shadow-xl shadow-cyan-900/30;
+  }
+
+  .admin-link-inactive {
+    @apply border-white/10 bg-white/[0.02] text-slate-100/90 hover:border-cyan-300/40 hover:bg-white/[0.08] hover:text-white;
+  }
+
+  .admin-main-wrap {
+    @apply w-full px-4 pb-16 pt-5 sm:px-6 lg:px-10;
+  }
+
+  .admin-page-hero {
+    @apply mb-8 rounded-[1.8rem] border border-white/15 bg-gradient-to-r from-slate-900/80 via-slate-900/70 to-slate-900/80 p-6 shadow-2xl shadow-slate-950/50 backdrop-blur;
+  }
+
+  .admin-card {
+    @apply rounded-3xl border border-white/10 bg-slate-900/70 shadow-2xl shadow-slate-950/45 backdrop-blur;
+  }
+
+  .admin-card-soft {
+    @apply rounded-3xl border border-white/10 bg-slate-900/55 shadow-xl shadow-slate-950/35 backdrop-blur;
+  }
+
+  .admin-stat-card {
+    @apply rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-900/60 p-5 shadow-xl shadow-slate-950/45 backdrop-blur;
+  }
+
+  .admin-table-wrap {
+    @apply overflow-hidden rounded-3xl border border-white/10 bg-slate-900/70 shadow-2xl shadow-slate-950/45 backdrop-blur;
+  }
+
+  .admin-table-head {
+    @apply bg-slate-900/90 text-slate-300;
+  }
+
+  .admin-table-row {
+    @apply transition hover:bg-slate-800/60;
+  }
+
+  .admin-input {
+    @apply w-full rounded-xl border border-white/15 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 shadow-sm outline-none transition focus:border-cyan-300;
+  }
+
+  .admin-btn-primary {
+    @apply rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-cyan-900/30 transition hover:from-cyan-600 hover:to-emerald-600;
+  }
+
+  .admin-btn-secondary {
+    @apply rounded-xl border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/50 hover:bg-slate-800/80;
+  }
+}
+
 @keyframes rise {
   from {
     opacity: 0;

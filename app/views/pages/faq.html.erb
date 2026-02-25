@@ -1,0 +1,19 @@
+<section class="mx-auto w-full max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+  <div class="mb-8">
+    <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">FAQ</p>
+    <h1 class="mt-2 font-heading text-4xl font-bold text-slate-900">Frequently Asked Questions</h1>
+    <p class="mt-4 text-base text-slate-700">
+      Straight answers about timelines, delivery model, pricing approach, and support.
+    </p>
+  </div>
+
+  <div class="space-y-3">
+    <% @faq_items.each do |item| %>
+      <%= render "shared/faq_item", **item %>
+    <% end %>
+  </div>
+
+  <div class="mt-10">
+    <%= link_to "Get My Free Project Plan", "#{contact_path}#audit-form", class: "inline-flex rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:from-cyan-600 hover:to-emerald-600" %>
+  </div>
+</section>

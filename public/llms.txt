@@ -6,11 +6,13 @@ Primary Pages:
 - https://tudouke.com/
 - https://tudouke.com/how-it-works
 - https://tudouke.com/what-we-replace
+- https://tudouke.com/faq
 - https://tudouke.com/pricing
 - https://tudouke.com/about
 - https://tudouke.com/contact
 - https://tudouke.com/privacy
 - https://tudouke.com/terms
+- https://tudouke.com/solutions/<slug> (admin-managed SEO landing pages)
 
 Offer Highlights:
 - Fast, AI-assisted development with human engineering review.

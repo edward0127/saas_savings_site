@@ -1,4 +1,8 @@
+require "digest"
+
 class ApplicationController < ActionController::Base
+  BOT_USER_AGENT_REGEX = /(bot|crawl|spider|slurp|bingpreview|facebookexternalhit|curl|wget|lighthouse|headless)/i
+
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
@@ -8,6 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :meta_title, :meta_description, :meta_image, :meta_robots, :canonical_url, :structured_data_items, :analytics_script_src
 
   before_action :set_default_meta
+  after_action :track_visit
 
   private
 
@@ -55,6 +60,39 @@ class ApplicationController < ActionController::Base
 
   def analytics_script_src
     ENV["ANALYTICS_SCRIPT_SRC"].presence
+  end
+
+  def track_visit
+    return unless trackable_visit_request?
+
+    user_agent = request.user_agent.to_s
+    ip_address = request.remote_ip.to_s
+
+    Visit.create(
+      ip_address: ip_address.first(45),
+      path: request.path.to_s.first(255),
+      http_method: request.request_method.to_s.first(10),
+      user_agent: user_agent.first(2000),
+      referer: request.referer.to_s.first(2000),
+      visitor_key: Digest::SHA256.hexdigest("#{ip_address}|#{user_agent}"),
+      bot: user_agent.match?(BOT_USER_AGENT_REGEX),
+      occurred_at: Time.current
+    )
+  rescue StandardError => e
+    Rails.logger.error("Visit tracking failed: #{e.class} #{e.message}")
+  end
+
+  def trackable_visit_request?
+    return false unless request.get?
+    return false unless request.format.html?
+    return false if controller_path.start_with?("admin/")
+    return false if request.path == "/up"
+    return false if request.path.start_with?("/rails/active_storage")
+    return false unless Visit.table_exists?
+
+    true
+  rescue StandardError
+    false
   end
 
   def base_structured_data

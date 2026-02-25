@@ -42,26 +42,6 @@ class PagesController < ApplicationController
     )
 
     @lead = Lead.new(source_page: request.path)
-    @audience_segments = [
-      "Small business owners",
-      "Startups and founders",
-      "Service teams",
-      "Independent professionals"
-    ]
-    @pain_points = [
-      {
-        title: "Too expensive for what you actually need",
-        description: "Many teams are paying for oversized software or agency processes they do not fully use."
-      },
-      {
-        title: "Too slow to launch",
-        description: "Projects often stall for months when requirements are unclear or delivery is overcomplicated."
-      },
-      {
-        title: "Too technical to manage",
-        description: "Owners and small teams need clear guidance, stable tools, and straightforward handover."
-      }
-    ]
     @build_examples = [
       {
         title: "Business websites with booking and enquiry flows",
@@ -116,12 +96,6 @@ class PagesController < ApplicationController
         detail: "Go live with practical handover and ongoing options."
       }
     ]
-    @pricing_tiers = [
-      { name: "Discovery and Scope Plan", tagline: "Custom quote", detail: "Plain-English recommendations with scope and delivery options." },
-      { name: "Website or App Build", tagline: "Fixed-scope proposal", detail: "Fast AI-assisted build with engineering quality checks and clean handover." },
-      { name: "Support and Improvements", tagline: "Optional ongoing plan", detail: "Keep your platform reliable, secure, and updated as needs change." }
-    ]
-    @faq_items = FAQ_ITEMS
   end
 
   def how_it_works
@@ -129,6 +103,16 @@ class PagesController < ApplicationController
       title: "How It Works | Tudouke",
       description: "A simple 5-step process for non-technical business owners: Discover, Scope, Build Fast, Stabilise, and Launch + Support."
     )
+  end
+
+  def faq
+    set_meta(
+      title: "FAQ | Tudouke",
+      description: "Common questions about Tudouke delivery, pricing approach, timelines, and support.",
+      structured_data: faq_structured_data
+    )
+
+    @faq_items = FAQ_ITEMS
   end
 
   def what_we_replace
@@ -221,7 +205,12 @@ class PagesController < ApplicationController
           "@type": "Audience",
           audienceType: "Small businesses and non-technical individuals"
         }
-      },
+      }
+    ]
+  end
+
+  def faq_structured_data
+    [
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",

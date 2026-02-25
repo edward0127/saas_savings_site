@@ -1,0 +1,103 @@
+<%= form_with model: [ :admin, landing_page ], class: "space-y-5" do |form| %>
+  <% if landing_page.errors.any? %>
+    <div class="rounded-2xl border border-rose-500/40 bg-rose-500/15 px-4 py-3 text-sm text-rose-200">
+      <ul class="space-y-1">
+        <% landing_page.errors.full_messages.each do |message| %>
+          <li>- <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <article class="admin-card p-6">
+    <h2 class="text-lg font-semibold text-white">Core Metadata</h2>
+    <p class="mt-1 text-sm text-slate-400">Controls public URL, search result title, and keyword target.</p>
+
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div>
+        <%= form.label :slug, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_field :slug, class: "admin-input" %>
+      </div>
+      <div>
+        <%= form.label :target_keyword, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_field :target_keyword, class: "admin-input" %>
+      </div>
+      <div class="sm:col-span-2">
+        <%= form.label :title, "Meta/Page Title", class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_field :title, class: "admin-input" %>
+      </div>
+      <div class="sm:col-span-2">
+        <%= form.label :meta_description, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_field :meta_description, maxlength: 180, class: "admin-input" %>
+        <p class="mt-1 text-xs text-slate-400">Recommended 140-180 characters.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="admin-card p-6">
+    <h2 class="text-lg font-semibold text-white">Above-The-Fold Content</h2>
+    <p class="mt-1 text-sm text-slate-400">Primary messaging users and search engines see first.</p>
+
+    <div class="mt-4 grid gap-4">
+      <div>
+        <%= form.label :hero_title, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_field :hero_title, class: "admin-input" %>
+      </div>
+      <div>
+        <%= form.label :hero_subtitle, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_area :hero_subtitle, rows: 3, class: "admin-input" %>
+      </div>
+      <div>
+        <%= form.label :intro, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_area :intro, rows: 3, class: "admin-input" %>
+      </div>
+    </div>
+  </article>
+
+  <article class="admin-card p-6">
+    <h2 class="text-lg font-semibold text-white">Problem and Solution Blocks</h2>
+    <p class="mt-1 text-sm text-slate-400">Enter one bullet point per line for cleaner rendering.</p>
+
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div>
+        <%= form.label :problem_title, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_field :problem_title, class: "admin-input" %>
+        <%= form.label :problem_points, "Problem Points (one per line)", class: "mb-1 mt-3 block text-sm font-medium text-slate-200" %>
+        <%= form.text_area :problem_points, rows: 7, class: "admin-input" %>
+      </div>
+
+      <div>
+        <%= form.label :solution_title, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_field :solution_title, class: "admin-input" %>
+        <%= form.label :solution_points, "Solution Points (one per line)", class: "mb-1 mt-3 block text-sm font-medium text-slate-200" %>
+        <%= form.text_area :solution_points, rows: 7, class: "admin-input" %>
+      </div>
+    </div>
+  </article>
+
+  <article class="admin-card p-6">
+    <h2 class="text-lg font-semibold text-white">Call To Action</h2>
+    <div class="mt-4 grid gap-4">
+      <div>
+        <%= form.label :cta_title, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_field :cta_title, class: "admin-input" %>
+      </div>
+      <div>
+        <%= form.label :cta_body, class: "mb-1 block text-sm font-medium text-slate-200" %>
+        <%= form.text_area :cta_body, rows: 3, class: "admin-input" %>
+      </div>
+    </div>
+
+    <label class="mt-4 inline-flex items-center gap-2 text-sm text-slate-200">
+      <%= form.check_box :published %>
+      Published
+    </label>
+  </article>
+
+  <div class="flex flex-wrap gap-3 pb-1">
+    <%= form.submit class: "admin-btn-primary" %>
+    <% if landing_page.persisted? %>
+      <%= link_to "View Public Page", solution_path(slug: landing_page.slug), target: "_blank", rel: "noopener", class: "admin-btn-secondary" %>
+    <% end %>
+  </div>
+<% end %>

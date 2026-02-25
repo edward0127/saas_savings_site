@@ -19,8 +19,10 @@ Modern, conversion-focused marketing website for an affordable AI-assisted websi
   - `/`
   - `/how-it-works`
   - `/what-we-replace` (menu label: "What We Build")
+  - `/faq`
   - `/pricing`
   - `/case-studies` (placeholder page, currently hidden from main navigation)
+  - `/solutions/:slug` (admin-managed SEO landing pages)
   - `/about`
   - `/contact`
   - `/privacy`
@@ -34,6 +36,8 @@ Modern, conversion-focused marketing website for an affordable AI-assisted websi
   - Optional email notification to owner
 - Admin backend:
   - `/admin/leads` (HTTP Basic protected)
+  - `/admin/visits` (traffic analytics by date, IP/user-agent level details)
+  - `/admin/landing_pages` (create/edit/publish SEO landing pages)
   - Lead detail page
   - CSV export (`/admin/leads/export.csv`)
   - `/admin/settings` for owner email + SMTP config

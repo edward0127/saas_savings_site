@@ -3,6 +3,8 @@ require "digest"
 module Admin
   class BaseController < ApplicationController
     before_action :authenticate!
+    before_action :set_admin_meta
+    layout "admin"
 
     private
 
@@ -31,6 +33,11 @@ module Admin
         Digest::SHA256.hexdigest(left.to_s),
         Digest::SHA256.hexdigest(right.to_s)
       )
+    end
+
+    def set_admin_meta
+      @meta_title = "Tutuke Admin"
+      @meta_description = "Admin portal for leads, settings, traffic analytics, and SEO landing pages."
     end
   end
 end

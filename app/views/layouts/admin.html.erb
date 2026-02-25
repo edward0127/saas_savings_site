@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= meta_title %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= meta_description %>">
+    <meta name="robots" content="noindex,nofollow">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="admin-shell-bg antialiased selection:bg-cyan-500/30 selection:text-white">
+    <div class="flex min-h-screen flex-col lg:flex-row">
+      <aside class="admin-sidebar">
+        <div class="admin-card-soft p-4">
+          <div class="flex items-center gap-3">
+            <span class="admin-brand-chip">TK</span>
+            <div>
+              <p class="font-heading text-lg font-bold tracking-tight text-white">Tutuke</p>
+              <p class="text-xs text-slate-300/80">Admin command center</p>
+            </div>
+          </div>
+          <div class="mt-4 rounded-2xl border border-cyan-300/20 bg-gradient-to-r from-cyan-500/15 to-emerald-500/10 px-3 py-2 text-xs text-slate-200">
+            Leads, traffic, SEO pages, and email setup in one place.
+          </div>
+        </div>
+
+        <nav class="mt-5 grid grid-cols-2 gap-2 lg:grid-cols-1">
+          <%= link_to admin_leads_path, class: admin_nav_link_class(admin_leads_path) do %>
+            <span class="shrink-0"><%= admin_inline_icon(:leads) %></span>
+            <span>Leads</span>
+          <% end %>
+          <%= link_to admin_visits_path, class: admin_nav_link_class(admin_visits_path) do %>
+            <span class="shrink-0"><%= admin_inline_icon(:traffic) %></span>
+            <span>Traffic</span>
+          <% end %>
+          <%= link_to admin_landing_pages_path, class: admin_nav_link_class(admin_landing_pages_path) do %>
+            <span class="shrink-0"><%= admin_inline_icon(:seo) %></span>
+            <span>SEO Pages</span>
+          <% end %>
+          <%= link_to edit_admin_settings_path, class: admin_nav_link_class(edit_admin_settings_path) do %>
+            <span class="shrink-0"><%= admin_inline_icon(:settings) %></span>
+            <span>Settings</span>
+          <% end %>
+        </nav>
+
+        <div class="mt-4">
+          <%= link_to root_path, class: "admin-btn-secondary inline-flex w-full items-center justify-center gap-2" do %>
+            <%= admin_inline_icon(:website) %>
+            <span>View Public Site</span>
+          <% end %>
+        </div>
+      </aside>
+
+      <main class="admin-main-wrap">
+        <% if flash.any? %>
+          <div class="mb-6 space-y-3">
+            <% flash.each do |type, message| %>
+              <div class="<%= type.to_s == "notice" ? "border-emerald-400/40 bg-emerald-400/15 text-emerald-100" : "border-rose-400/40 bg-rose-400/15 text-rose-100" %> rounded-2xl border px-4 py-3 text-sm shadow-lg backdrop-blur">
+                <%= message %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= yield %>
+      </main>
+    </div>
+  </body>
+</html>

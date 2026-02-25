@@ -27,10 +27,11 @@
 
     <div id="mobile-nav-panel" data-menu-target="panel" class="hidden basis-full w-full md:block md:basis-auto md:w-auto">
       <div class="mt-4 flex flex-col gap-3 md:mt-0 md:flex-row md:items-center md:gap-6">
+        <%= link_to "About", about_path, class: nav_link_class(about_path) %>
         <%= link_to "How It Works", how_it_works_path, class: nav_link_class(how_it_works_path) %>
         <%= link_to "What We Build", what_we_replace_path, class: nav_link_class(what_we_replace_path) %>
         <%= link_to "Engagement", pricing_path, class: nav_link_class(pricing_path) %>
-        <%= link_to "About", about_path, class: nav_link_class(about_path) %>
+        <%= link_to "FAQ", faq_path, class: nav_link_class(faq_path) %>
         <%= link_to "Contact", contact_path, class: nav_link_class(contact_path) %>
         <%= link_to "Get a Free Plan", "#{contact_path}#audit-form", class: "inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 px-4 py-2 text-sm font-semibold text-white transition hover:from-cyan-600 hover:to-emerald-600" %>
       </div>

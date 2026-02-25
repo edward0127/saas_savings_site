@@ -1,36 +1,9 @@
 <%= render "shared/hero" %>
 
-<section class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-  <div class="rounded-2xl border border-slate-200 bg-white/85 px-6 py-5 shadow-sm">
-    <p class="text-center text-xs font-semibold uppercase tracking-wider text-slate-500">Who we help</p>
-    <h2 class="mt-2 text-center text-lg font-semibold text-slate-900">Built for people who want results, not technical complexity</h2>
-    <div class="mt-3 grid grid-cols-2 gap-3 text-center text-sm font-semibold text-slate-700 sm:grid-cols-4">
-      <% @audience_segments.each do |segment| %>
-        <span class="rounded-lg border border-slate-200 bg-white px-3 py-2"><%= segment %></span>
-      <% end %>
-    </div>
-  </div>
-</section>
-
-<section class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-  <div class="mb-8">
-    <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">Why projects get delayed</p>
-    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">Common blockers we remove</h2>
-  </div>
-  <div class="grid gap-4 md:grid-cols-3">
-    <% @pain_points.each_with_index do |pain_point, index| %>
-      <%= render "shared/feature_card",
-        icon: [ :coins, :chart, :bolt ][index],
-        title: pain_point[:title],
-        description: pain_point[:description] %>
-    <% end %>
-  </div>
-</section>
-
 <section class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
   <div class="mb-8">
     <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">What we build</p>
-    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">Websites and apps designed for your exact business needs</h2>
+    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">Focused digital tools that solve real workflow problems</h2>
   </div>
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <% @build_examples.each do |example| %>
@@ -42,7 +15,7 @@
 <section class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
   <div class="mb-8">
     <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">How it works</p>
-    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">A fast, clear process from idea to launch</h2>
+    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">A simple path from idea to launch</h2>
   </div>
   <div class="grid gap-4 md:grid-cols-5">
     <% @process_steps.each_with_index do |step, index| %>
@@ -55,22 +28,6 @@
   </div>
 </section>
 
-<section class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-  <div class="mb-8 flex flex-wrap items-end justify-between gap-3">
-    <div>
-      <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">Engagement options</p>
-      <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">Simple ways to start, scale, and stay supported</h2>
-    </div>
-    <%= link_to "See Engagement Options", pricing_path, class: "text-sm font-semibold text-cyan-700 hover:text-cyan-800" %>
-  </div>
-  <div class="grid gap-4 md:grid-cols-3">
-    <% @pricing_tiers.each do |tier| %>
-      <%= render "shared/pricing_card", **tier %>
-    <% end %>
-  </div>
-  <p class="mt-3 text-xs text-slate-500">All quotes are based on your exact scope, quality requirements, and timeline.</p>
-</section>
-
 <section class="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
   <div class="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-6 shadow-sm">
     <p class="text-xs font-semibold uppercase tracking-wider text-emerald-800">Community Support</p>
@@ -78,18 +35,11 @@
     <p class="mt-3 max-w-4xl text-sm leading-6 text-slate-700">
       We want AI productivity gains to benefit mission-driven organisations too. We reserve capacity for pro-bono or heavily discounted projects for verified charities and non-profits. Availability depends on scope, urgency, and current schedule.
     </p>
-  </div>
-</section>
-
-<section class="mx-auto w-full max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
-  <div class="mb-8">
-    <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">FAQ</p>
-    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">Quick answers in plain English</h2>
-  </div>
-  <div class="space-y-3">
-    <% @faq_items.each do |item| %>
-      <%= render "shared/faq_item", **item %>
-    <% end %>
+    <div class="mt-4">
+      <%= link_to "View Engagement Options", pricing_path, class: "text-sm font-semibold text-emerald-800 hover:text-emerald-900" %>
+      <span class="mx-2 text-emerald-700">|</span>
+      <%= link_to "Read FAQs", faq_path, class: "text-sm font-semibold text-emerald-800 hover:text-emerald-900" %>
+    </div>
   </div>
 </section>
 
