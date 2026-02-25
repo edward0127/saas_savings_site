@@ -149,8 +149,16 @@ App will be available at `http://localhost:3000`.
 
 ## Run on server
 
+SHA=$(git rev-parse --short HEAD)
+docker buildx build --platform linux/amd64 \
+  -t ghcr.io/edward0127/curtain_b2b_quote:$SHA \
+  -t ghcr.io/edward0127/curtain_b2b_quote:latest \
+  --push .
+
+git pull
 docker compose down
 docker compose pull web
 docker compose up -d --force-recreate
-docker ps
-docker compose logs --tail=100 web
+
+#docker ps
+#docker compose logs --tail=100 web
