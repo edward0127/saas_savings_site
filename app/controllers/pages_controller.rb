@@ -42,58 +42,22 @@ class PagesController < ApplicationController
     )
 
     @lead = Lead.new(source_page: request.path)
-    @build_examples = [
-      {
-        title: "Business websites with booking and enquiry flows",
-        description: "Convert visitors into real enquiries with clear, mobile-friendly steps.",
-        icon: :workflow
-      },
-      {
-        title: "Customer portals",
-        description: "Give customers one secure place to view updates, files, and requests.",
-        icon: :shield
-      },
-      {
-        title: "Quote and approval workflows",
-        description: "Cut back-and-forth and speed up decisions with simple approval flows.",
-        icon: :bolt
-      },
-      {
-        title: "Team dashboards",
-        description: "Help staff track priorities and outcomes without spreadsheet chaos.",
-        icon: :chart
-      },
-      {
-        title: "Lightweight business apps",
-        description: "Build focused tools that match your workflow without enterprise bloat.",
-        icon: :coins
-      },
-      {
-        title: "Upgrades for existing websites and apps",
-        description: "Modernise what you already have instead of rebuilding everything.",
-        icon: :workflow
-      }
-    ]
     @process_steps = [
       {
-        title: "Discover",
-        detail: "You share your goals in plain language."
+        title: "Tell me what you need",
+        detail: "Share your idea, pain point, or current manual process."
       },
       {
-        title: "Scope",
-        detail: "We define priorities, outcomes, and proposal options."
+        title: "Get a free project plan",
+        detail: "I'll help map out a practical solution, including what should be built first."
       },
       {
-        title: "Build Fast",
-        detail: "AI-assisted delivery accelerates production."
+        title: "Build fast with AI + expert oversight",
+        detail: "AI speeds up the heavy lifting, while I review, refine, and shape the result."
       },
       {
-        title: "Stabilise",
-        detail: "Engineering reviews focus on quality and reliability."
-      },
-      {
-        title: "Launch + Support",
-        detail: "Go live with practical handover and ongoing options."
+        title: "Launch something useful",
+        detail: "You get a working digital solution designed to save time, reduce friction, or improve how things run."
       }
     ]
   end
@@ -101,7 +65,7 @@ class PagesController < ApplicationController
   def how_it_works
     set_meta(
       title: "How It Works | Tudouke",
-      description: "A simple 5-step process for non-technical business owners: Discover, Scope, Build Fast, Stabilise, and Launch + Support."
+      description: "A clear 4-step process: tell me what you need, get a free project plan, build fast with AI and expert oversight, then launch something useful."
     )
   end
 

@@ -1,30 +1,82 @@
 <%= render "shared/hero" %>
 
-<section class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-  <div class="mb-8">
-    <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">What we build</p>
-    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">Focused digital tools that solve real workflow problems</h2>
+<section class="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+  <div class="mb-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">Simple delivery</p>
+    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">How it works</h2>
   </div>
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <% @build_examples.each do |example| %>
-      <%= render "shared/feature_card", icon: example[:icon], title: example[:title], description: example[:description] %>
+  <div class="grid gap-4 md:grid-cols-2">
+    <% @process_steps.each_with_index do |step, index| %>
+      <article class="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm">
+        <p class="text-base font-semibold text-slate-900">
+          <span class="mr-2 text-cyan-700"><%= index + 1 %>.</span><%= step[:title] %>
+        </p>
+        <p class="mt-2 text-sm leading-6 text-slate-600"><%= step[:detail] %></p>
+      </article>
     <% end %>
   </div>
 </section>
 
-<section class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-  <div class="mb-8">
-    <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">How it works</p>
-    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">A simple path from idea to launch</h2>
+<section class="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+  <div class="mb-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">Trust factors</p>
+    <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">Why Tudouke</h2>
   </div>
-  <div class="grid gap-4 md:grid-cols-5">
-    <% @process_steps.each_with_index do |step, index| %>
-      <div class="rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-sm">
-        <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">Step <%= index + 1 %></p>
-        <p class="mt-2 text-base font-semibold text-slate-900"><%= step[:title] %></p>
-        <p class="mt-1 text-sm text-slate-600"><%= step[:detail] %></p>
-      </div>
-    <% end %>
+  <div class="grid gap-4 md:grid-cols-2">
+    <article class="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm">
+      <h3 class="text-lg font-semibold text-slate-900">AI-assisted speed</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">AI helps accelerate planning, prototyping, and delivery.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm">
+      <h3 class="text-lg font-semibold text-slate-900">Expert human review</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        Every solution is reviewed and guided by an experienced developer, so it's not just fast, it's practical and reliable.
+      </p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm">
+      <h3 class="text-lg font-semibold text-slate-900">Fair, transparent pricing</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">No big-agency overhead. No inflated scope. No unnecessary complexity.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm">
+      <h3 class="text-lg font-semibold text-slate-900">Built around your real workflow</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        The goal is not to sell you more software. The goal is to solve the problem you actually have.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+  <div class="grid gap-6 xl:grid-cols-2">
+    <article class="rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-sm">
+      <h2 class="font-heading text-2xl font-bold text-slate-900">Who this is for</h2>
+      <p class="mt-3 text-sm text-slate-600">This is ideal for:</p>
+      <ul class="mt-4 space-y-2 text-sm leading-6 text-slate-700">
+        <li>- Small business owners who need something custom without spending a fortune</li>
+        <li>- Solo operators who want to automate repetitive admin</li>
+        <li>- People with an idea who want a lean first version</li>
+        <li>- Anyone paying for too many tools that still don't fit their workflow</li>
+        <li>- Individuals who need a simple, tailored online solution</li>
+      </ul>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-sm">
+      <h2 class="font-heading text-2xl font-bold text-slate-900">A smarter alternative to expensive custom builds</h2>
+      <p class="mt-3 text-sm leading-6 text-slate-700">
+        Traditional custom projects can be slow, costly, and harder than they need to be.
+      </p>
+      <p class="mt-3 text-sm leading-6 text-slate-700">
+        Tudouke uses AI to reduce build time and cost while keeping human judgment in the loop, so you can get a useful result faster, with less friction.
+      </p>
+      <p class="mt-4 text-sm font-semibold text-slate-800">You get:</p>
+      <ul class="mt-2 space-y-2 text-sm leading-6 text-slate-700">
+        <li>- Faster turnaround</li>
+        <li>- Lower development cost</li>
+        <li>- Clearer scope</li>
+        <li>- Less technical overwhelm</li>
+        <li>- A solution built for your actual needs</li>
+      </ul>
+    </article>
   </div>
 </section>
 
@@ -33,7 +85,7 @@
     <p class="text-xs font-semibold uppercase tracking-wider text-emerald-800">Community Support</p>
     <h2 class="mt-2 font-heading text-2xl font-bold text-slate-900">Special support for charities and non-profits</h2>
     <p class="mt-3 max-w-4xl text-sm leading-6 text-slate-700">
-      We want AI productivity gains to benefit mission-driven organisations too. We reserve capacity for pro-bono or heavily discounted projects for verified charities and non-profits. Availability depends on scope, urgency, and current schedule.
+      We reserve capacity for pro-bono or heavily discounted projects for verified charities and non-profits, depending on scope and schedule.
     </p>
     <div class="mt-4">
       <%= link_to "View Engagement Options", pricing_path, class: "text-sm font-semibold text-emerald-800 hover:text-emerald-900" %>
@@ -49,13 +101,30 @@
       <p class="text-xs font-semibold uppercase tracking-wider text-cyan-700">Start here</p>
       <h2 class="mt-2 font-heading text-3xl font-bold text-slate-900">Get your free project plan</h2>
       <p class="mt-4 text-sm leading-6 text-slate-700">
-        Tell us your goal and current setup. We will reply with a practical plan focused on fast delivery, reliable quality, and competitive cost.
+        Tell me what you're trying to solve, and I'll help map out a practical digital solution you can actually use.
       </p>
-      <ul class="mt-6 space-y-3 text-sm text-slate-700">
-        <li class="flex items-start gap-2"><span class="mt-1 text-cyan-700"><%= inline_icon(:shield) %></span><span>Plain-language recommendations you can act on</span></li>
-        <li class="flex items-start gap-2"><span class="mt-1 text-cyan-700"><%= inline_icon(:chart) %></span><span>Clear scope options and delivery timeline</span></li>
-        <li class="flex items-start gap-2"><span class="mt-1 text-cyan-700"><%= inline_icon(:workflow) %></span><span>A build approach tailored to your real workflow</span></li>
-      </ul>
+      <p class="mt-3 text-sm leading-6 text-slate-700">
+        Fast to plan. Fair to price. Built with AI, guided by experience.
+      </p>
+      <div class="mt-5 rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-sm">
+        <p class="text-sm font-semibold text-slate-900">No pressure, no confusing tech talk</p>
+        <p class="mt-2 text-sm leading-6 text-slate-700">If you're not sure what you need yet, that's completely fine.</p>
+        <p class="mt-2 text-sm font-medium text-slate-800">You can simply tell me:</p>
+        <ul class="mt-2 space-y-2 text-sm leading-6 text-slate-700">
+          <li class="flex items-start gap-2">
+            <span class="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+            <span>what you're trying to do</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+            <span>what's currently frustrating</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+            <span>what you wish was easier</span>
+          </li>
+        </ul>
+      </div>
       <p class="mt-4 text-xs text-slate-500">No obligation. We only use your details to respond to this enquiry.</p>
     </div>
     <div>
