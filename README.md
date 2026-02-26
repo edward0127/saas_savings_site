@@ -158,14 +158,12 @@ docker buildx build --platform linux/amd64 \
   -t ghcr.io/edward0127/saas_savings_site:$SHA \
   -t ghcr.io/edward0127/saas_savings_site:latest \
   --push .
-docker buildx build --platform linux/amd64 \
-  -t ghcr.io/edward0127/saas_savings_site:$SHA \
-  -t ghcr.io/edward0127/saas_savings_site:latest \
-  --push .
 
 git pull
+
 docker compose down
 docker compose pull web
+docker compose run --rm web bin/rails db:migrate
 docker compose up -d --force-recreate
 
 #docker ps
