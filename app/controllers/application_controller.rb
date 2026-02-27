@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
     return unless trackable_visit_request?
 
     user_agent = request.user_agent.to_s
-    ip_address = request.remote_ip.to_s
+    ip_address = ClientIpResolver.call(request).presence || request.remote_ip.to_s
 
     Visit.create(
       ip_address: ip_address.first(45),
